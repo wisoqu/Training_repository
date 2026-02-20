@@ -25,7 +25,7 @@ class Book:
 
     @progress.setter
     def progress(self, value):
-        if value > 100:
+        if value > 100 or value < 0:
             raise ValueError("Процент не может быть больше 100")
         self._progress = value  # отрицательные допустимы по условию
 
