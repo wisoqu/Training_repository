@@ -77,5 +77,5 @@ ann = WorkingStudent("Ann", 30000, 1500)
 ann.go_to_work()
 ann.go_to_lecture()
 ann.display_inf()
-# Вызываем новый метод, чтобы увидеть все доходы
+
 ann.show_money()
