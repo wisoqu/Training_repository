@@ -79,3 +79,6 @@ ann.go_to_lecture()
 ann.display_inf()
 
 ann.show_money()
+
+# Watch a queue of a functionality
+print(WorkingStudent.__mro__)
