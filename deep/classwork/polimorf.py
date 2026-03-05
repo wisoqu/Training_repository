@@ -51,6 +51,8 @@
 # for _ in figures:
 #     show_info_v(_)
 
+
+
 # Параметрический полиморфизм
 #
 # from typing import TypeVar, List
@@ -68,34 +70,52 @@
 # print(nums)
 # print(lst_str)
 
-from typing import Generic, TypeVar, List
+# from typing import Generic, TypeVar, List
+#
+# T = TypeVar("T")
+#
+# class Storage(Generic[T]):
+#     def __init__(self):
+#         self.__items: List[T] = []
+#
+#     def put(self, item: T):
+#         self.__items.append(item)
+#         print(f"Добавлено: {item}")
+#
+#     @property
+#     def get_all(self) -> List[T]:
+#         return self.__items
+#
+# # Сейф для чисел
+# int_storage = Storage[int]()
+# int_storage.put(10)
+# int_storage.put(20)
+# print(int_storage.get_all)
+#
+#
+# # Сейф для букв
+#
+# str_storage = Storage[str]()
+# str_storage.put("hello")
+# str_storage.put("bye")
+#
+# print(f"first storage: {int_storage.get_all}")
+# print(f"second storage: {str_storage.get_all}")
 
-T = TypeVar("T")
 
-class Storage(Generic[T]):
-    def __init__(self):
-        self.__items: List[T] = []
-
-    def put(self, item: T):
-        self.__items.append(item)
-        print(f"Добавлено: {item}")
-
-    @property
-    def get_all(self) -> List[T]:
-        return self.__items
-
-# Сейф для чисел
-int_storage = Storage[int]()
-int_storage.put(10)
-int_storage.put(20)
-print(int_storage.get_all)
-
-
-# Сейф для букв
-
-str_storage = Storage[str]()
-str_storage.put("hello")
-str_storage.put("bye")
-
-print(f"first storage: {int_storage.get_all}")
-print(f"second storage: {str_storage.get_all}")
+# Magic methods
+# class Vector:
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#     def __add__(self, other):
+#         return Vector(self.x + other.x, self.y + other.y)
+#
+#     def __repr__(self):
+#         return f"Vector({self.x}, {self.y})"
+#
+# v1 = Vector(1, 3)
+# v2 = Vector(2, 3)
+# print(v1.__add__(v2))
+# 3.6

@@ -37,11 +37,35 @@ class Triangle:
 
     def area(self):
         """Вычисляет площадь треугольника по формуле Герона."""
-        # Полупериметр
         p = (self.a + self.b + self.c) / 2
-        # Формула Герона
+        if p < self.a or p < self.b or p < self.c:
+            return 0  # Несуществующий треугольник
         return math.sqrt(p * (p - self.a) * (p - self.b) * (p - self.c))
 
     def perimeter(self):
         """Вычисляет периметр треугольника."""
         return self.a + self.b + self.c
+
+
+@dataclass()
+class V_rectangle(Rectangle):
+    h: int
+
+    def v(self):
+        return self.area() * self.h
+
+
+@dataclass()
+class V_circle(Circle):
+    h: int
+
+    def v(self):
+        return self.area() * self.h
+
+
+@dataclass()
+class V_triangle(Triangle):
+    h: int
+
+    def v(self):
+        return self.area() * self.h
