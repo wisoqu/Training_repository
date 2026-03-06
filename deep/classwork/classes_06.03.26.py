@@ -70,54 +70,92 @@
 # print(tom)
 # tom.display_info()
 
-
-import abc
-class Shape(abc.ABC):
-    @abc.abstractmethod
-    def area(self):
-        pass
+#
+# import abc
+# class Shape(abc.ABC):
+#     @abc.abstractmethod
+#     def area(self):
+#         pass
 #
 # shape = Shape()
 # print(shape)
+#
+# class Rectangle(Shape):
+#     def __init__(self, width, heigth):
+#         self.width = width
+#         self.heigth = heigth
+#
+#     def area(self):
+#         return self.width * self.heigth
+#
+#
+#
+# rect = Rectangle(11, 22)
+# print(f"Rectangle area: {rect.area()}")
+#
+#
+# class Triangle(Shape):
+#     def __init__(self, a, h):
+#         self.a = a
+#         self.h = h
+#
+#     def area(self):
+#         return 0.5 * self.a * self.h
+#
+#
+#
+#
+#
+#
+# from dataclasses import dataclass
+#
+# class BPLA(abc.ABC):
+#
+#     @abc.abstractmethod
+#     def distance(self):
+#         pass
+#
+# @dataclass
+# class New_bpla(BPLA):
+#     km: int
+#
+#     def distance(self):
+#         return  f"Only {self.km} distance!"
 
-class Rectangle(Shape):
-    def __init__(self, width, heigth):
-        self.width = width
-        self.heigth = heigth
-
-    def area(self):
-        return self.width * self.heigth
+import abc
 
 
-
-rect = Rectangle(11, 22)
-print(f"Rectangle area: {rect.area()}")
-
-
-class Triangle(Shape):
-    def __init__(self, a, h):
-        self.a = a
-        self.h = h
-
-    def area(self):
-        return 0.5 * self.a * self.h
-
-
-
-
-
-
-from dataclasses import dataclass
-
-class BPLA(abc.ABC):
+class Employee(abc.ABC):
+    name: str = "Name"
+    id: int = -1
 
     @abc.abstractmethod
-    def distance(self):
+    def calculateSalary(self):
         pass
 
-@dataclass
-class New_bpla(BPLA):
-    km: int
+    def display_info(self):
+        print(self)
 
-    def distance(self):
-        return  f"Only {self.km} distance!"
+
+
+    def __str__(self):
+        return (f"Name: {Employee.name}\n"
+                f"ID: {Employee.id}")
+
+class FullTimeEmployee(Employee):
+    def __init__(self, name, id, monthlysalary):
+        self.name = name
+        self.id = id
+        FullTimeEmployee.name = self.name
+        FullTimeEmployee.id = self.id
+        self.monthlysalary = monthlysalary
+
+    def calculateSalary(self):
+        return self.monthlysalary * 12
+
+    def display_info(self):
+        print(self)
+        print(f"Salary: {self.calculateSalary()}")
+
+class ContractEmployee(Employee):
+    pass
