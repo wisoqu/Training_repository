@@ -126,8 +126,9 @@ import abc
 
 
 class Employee(abc.ABC):
-    name: str = "Name"
-    id: int = -1
+    def __init__(self, name: str, id: int):
+        self.name = name
+        self.id = id
 
     @abc.abstractmethod
     def calculateSalary(self):
@@ -136,26 +137,44 @@ class Employee(abc.ABC):
     def display_info(self):
         print(self)
 
-
-
     def __str__(self):
-        return (f"Name: {Employee.name}\n"
-                f"ID: {Employee.id}")
+        return (f"Name: {self.name}\n"
+                f"ID: {self.id}")
+
 
 class FullTimeEmployee(Employee):
     def __init__(self, name, id, monthlysalary):
-        self.name = name
-        self.id = id
-        FullTimeEmployee.name = self.name
-        FullTimeEmployee.id = self.id
+        super().__init__(name, id)
         self.monthlysalary = monthlysalary
 
     def calculateSalary(self):
         return self.monthlysalary * 12
 
     def display_info(self):
-        print(self)
+        super().display_info()
         print(f"Salary: {self.calculateSalary()}")
 
+
 class ContractEmployee(Employee):
-    pass
+    def __init__(self, name, id, hourlyrate, hoursworked):
+        super().__init__(name, id)
+        self.hourlyrate = hourlyrate
+        self.hoursworked = hoursworked
+
+    def calculateSalary(self):
+        return self.hourlyrate * self.hoursworked
+
+    def display_info(self):
+        super().display_info()
+        print(f"Salary: {self.calculateSalary()}")
+
+
+# Example usage
+workers = [
+    FullTimeEmployee("John Doe", 1, 5000),
+    ContractEmployee("Jane Smith", 2, 50, 160)
+]
+
+for worker in workers:
+    worker.display_info()
+    print("-" * 20)
